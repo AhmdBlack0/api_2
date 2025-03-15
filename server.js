@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json("test2");
+  res.json("test24");
 });
 
 mongoose
