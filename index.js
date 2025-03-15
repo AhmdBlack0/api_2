@@ -4,8 +4,11 @@ require("dotenv").config();
 app.use(express.json());
 const connectDB = require("./connectMongo");
 connectDB();
+const workoutRoutes = require("./routes/workout");
 
 const PORT = process.env.PORT;
+
+app.use("/api/workout", workoutRoutes);
 
 app.get("/", (req, res) => {
   res.json("test");
