@@ -8,17 +8,18 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json("test");
+  res.json("test2");
 });
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    app.listen(PORT, () => {
-      console.log("server work on port ", PORT);
-      console.log("content db");
-    });
+    console.log("Connected to MongoDB");
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((error) => {
-    console.log(error);
+    console.error("MongoDB connection error:", error);
   });
